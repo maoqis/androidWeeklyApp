@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/JavaDataSource/JavaDataSource.iml" filepath="$PROJECT_DIR$/JavaDataSource/JavaDataSource.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/androidnew.iml" filepath="$PROJECT_DIR$/.idea/androidnew.iml" />
+      <module fileurl="file://$PROJECT_DIR$/androidnew.iml" filepath="$PROJECT_DIR$/androidnew.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+    </modules>
+  </component>
+</project>

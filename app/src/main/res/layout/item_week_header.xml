@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/tv_title"
+    android:layout_width="match_parent"
+    android:layout_height="36dp"
+    android:gravity="left|center_vertical"
+    android:paddingLeft="10dp"
+    android:textColor="@color/text_header"
+    android:text="title"
+    android:textSize="20dp"
+    android:background="@color/colorPrimary"
+    tools:showIn="@layout/fragment_week" />
