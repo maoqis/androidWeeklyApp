@@ -26,6 +26,9 @@ android {
         abortOnError false
     }
 
+    dexOptions {
+        javaMaxHeapSize "1g"
+    }
 
     compileOptions {
         targetCompatibility 1.8
