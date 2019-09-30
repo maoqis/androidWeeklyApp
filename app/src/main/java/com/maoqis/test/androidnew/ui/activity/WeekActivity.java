@@ -22,6 +22,7 @@ import com.maoqis.test.androidnew.room.DataRepository;
 import com.maoqis.test.androidnew.room.db.entity.Week;
 import com.maoqis.test.androidnew.ui.fragment.WeekFragment;
 import com.maoqis.test.androidnew.view.DirectionalViewPager;
+import com.maoqis.test.androidnew.view.MyVIewPagerView;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -29,7 +30,7 @@ import java.util.List;
 
 public class WeekActivity extends AppCompatActivity {
     private static final String TAG = "WeekActivity";
-    private DirectionalViewPager mViewpager;
+    private MyVIewPagerView mViewpager;
     private MyPagerAdapter adapter;
 
     @Override
@@ -39,7 +40,7 @@ public class WeekActivity extends AppCompatActivity {
         assignViews();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        mViewpager.setOrientation(DirectionalViewPager.HORIZONTAL);
+//        mViewpager.setOrientation(DirectionalViewPager.HORIZONTAL);
         adapter = new MyPagerAdapter(this,getSupportFragmentManager());
         mViewpager.setAdapter(adapter);
         mViewpager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
@@ -130,7 +131,7 @@ public class WeekActivity extends AppCompatActivity {
 
 
     private void assignViews() {
-        mViewpager = (DirectionalViewPager) findViewById(R.id.viewpager);
+        mViewpager = (MyVIewPagerView) findViewById(R.id.viewpager);
     }
 
 

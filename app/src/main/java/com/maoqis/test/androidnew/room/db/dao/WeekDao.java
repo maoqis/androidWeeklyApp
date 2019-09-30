@@ -3,6 +3,7 @@ package com.maoqis.test.androidnew.room.db.dao;
 import android.arch.lifecycle.LiveData;
 import android.arch.persistence.room.Dao;
 import android.arch.persistence.room.Insert;
+import android.arch.persistence.room.OnConflictStrategy;
 import android.arch.persistence.room.Query;
 
 import com.maoqis.test.androidnew.room.db.entity.Week;
@@ -15,14 +16,14 @@ import java.util.List;
  */
 @Dao
 public interface WeekDao {
-    @Insert
-    void insertWeeks(Week... users);
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    void insertWeeks(Week... week);
 
 
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insertWeekList(List<WeekItem> userList);
 
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insertWeekItemList(List<WeekItem> bookList);
 
 

@@ -138,6 +138,9 @@ public class WeekFragment extends Fragment {
 
         LiveData<List<WeekItem>> listLiveData = DataRepository.getInstance(database).loadWeekItemsByWeekId(mWeek.getId());
         listLiveData.observe(WeekFragment.this, (weekItemList) -> {
+            if (weekItemList == null || weekItemList.isEmpty()) {
+                Log.e(TAG, "loadDBData: ",new NullPointerException("mWeek ="+mWeek.getId()) );
+            }
             if (weekItemList == null) return;
             if (database.getDatabaseCreated() != null) {
                 weekAdapter.getData().clear();
