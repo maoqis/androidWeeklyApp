@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/JavaDataSource/JavaDataSource.iml" filepath="$PROJECT_DIR$/JavaDataSource/JavaDataSource.iml" />
-      <module fileurl="file://$PROJECT_DIR$/androidWeeklyApp.iml" filepath="$PROJECT_DIR$/androidWeeklyApp.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/androidnew.iml" filepath="$PROJECT_DIR$/.idea/modules/androidnew.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/JavaDataSource/androidnew.JavaDataSource.iml" filepath="$PROJECT_DIR$/.idea/modules/JavaDataSource/androidnew.JavaDataSource.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/androidnew.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/androidnew.app.iml" />
     </modules>
   </component>
 </project>
