@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.webkit.WebView;
@@ -16,16 +17,18 @@ import com.maoqis.test.androidnew.ui.fragment.WebFragment;
 import static com.maoqis.test.androidnew.ui.item.WeekItemAdapterItem.KEY_URL;
 
 public class WebActivity extends AppCompatActivity {
-
+    private static final String TAG = "WebActivity";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_web);
         Fragment fragmentById = getFragmentManager().findFragmentById(R.id.fragment);
-        if (fragmentById != null && fragmentById instanceof WebFragment){
+        if (fragmentById != null && fragmentById instanceof WebFragment) {
             WebFragment webFragment = (WebFragment) fragmentById;
-            webFragment.getWebView().loadUrl(getIntent().getStringExtra(KEY_URL));
-            webFragment.getWebView().setWebViewClient(new WebViewClient(){
+            String url = getIntent().getStringExtra(KEY_URL);
+            Log.d(TAG, "onCreate: url=" + url);
+            webFragment.getWebView().loadUrl(url);
+            webFragment.getWebView().setWebViewClient(new WebViewClient() {
                 @Override
                 public void onPageFinished(WebView view, String url) {
                     super.onPageFinished(view, url);

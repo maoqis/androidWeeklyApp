@@ -5,10 +5,11 @@ buildscript {
     repositories {
         // You need to add the following repository to download the
         // new plugin.
-        google() // new which replace https://maven.google.com
         maven {
-            url 'https://oss.sonatype.org/content/repositories/snapshots'
+            url 'http://maven.aliyun.com/nexus/content/groups/public/'
         }
+        google() // new which replace https://maven.google.com
+
         maven {
             url "https://jitpack.io"
         }
@@ -23,10 +24,11 @@ allprojects {
     repositories {
         // You need to add the following repository to download the
         // new plugin.
-        google() // new which replace https://maven.google.com
         maven {
-            url 'https://oss.sonatype.org/content/repositories/snapshots'
+            url 'http://maven.aliyun.com/nexus/content/groups/public/'
         }
+        google() // new which replace https://maven.google.com
+
         maven {
             url "https://jitpack.io"
         }
