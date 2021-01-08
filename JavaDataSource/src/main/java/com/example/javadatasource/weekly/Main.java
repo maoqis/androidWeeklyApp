@@ -11,16 +11,10 @@ import com.example.javadatasource.utils.FileUtils;
 public class Main {
     public static void main(String [] args) throws InterruptedException {
         //发送 GET 请求
-        for (int i = 238; i >=160; i--) {
+        for (int i = 299; i >=299; i--) {
             downloadHtmlToFile(i);
             Thread.sleep(200+i);
         }
-
-
-
-
-
-
 
     }
 
