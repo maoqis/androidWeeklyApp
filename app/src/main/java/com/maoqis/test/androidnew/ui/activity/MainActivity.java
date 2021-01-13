@@ -17,15 +17,19 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.View;
 
-import com.maoqis.test.androidnew.utils.FileUtils;
 import com.maoqis.test.androidnew.R;
+import com.maoqis.test.androidnew.net.NetworkComponent;
+import com.maoqis.test.androidnew.net.RxException;
 import com.maoqis.test.androidnew.room.BasicApp;
 import com.maoqis.test.androidnew.room.DataRepository;
+import com.maoqis.test.androidnew.room.db.DataGenerator;
 import com.maoqis.test.androidnew.room.db.entity.Week;
+import com.maoqis.test.androidnew.utils.FileUtils;
 
 import java.io.File;
+
+import io.reactivex.schedulers.Schedulers;
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
@@ -37,14 +41,28 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         handleContactPermission();
-        findViewById(R.id.rootView).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this,WeekActivity.class);
-                startActivity(intent);
-            }
+        findViewById(R.id.tv_enter_weekly).setOnClickListener(view -> {
+            Intent intent = new Intent(MainActivity.this, WeekActivity.class);
+            startActivity(intent);
         });
 
+        findViewById(R.id.tv_test_date).setOnClickListener(view -> {
+            int week = 296;
+            NetworkComponent.getInstance().loadRxWeek(week)
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(Schedulers.io())
+                    .subscribe(responseBody -> {
+                        Log.d(TAG, "onNext() called with: responseBody = [" + responseBody + "]");
+                        if (responseBody != null) {
+                            Week data = DataGenerator.loadWeekFileData(responseBody, week);
+                        }
+
+
+                    }, new RxException<>(e -> {
+                        e.printStackTrace();
+                    }));
+
+        });
     }
 
     private void netDo() {
@@ -54,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
         File dir = makeSureDir();
         if (needLoad) {
             FileUtils.copyFilesFassets(this, "weekly", dir.getAbsolutePath() + "/weekly");
-            sp.edit().putBoolean("needLoad",false).commit();
+            sp.edit().putBoolean("needLoad", false).commit();
 
         }
 
@@ -64,9 +82,9 @@ public class MainActivity extends AppCompatActivity {
         weekId.observe(this, new Observer<Week>() {
             @Override
             public void onChanged(@Nullable Week week) {
-                if (application.getDatabase().getDatabaseCreated() != null){
+                if (application.getDatabase().getDatabaseCreated() != null) {
                     Log.d(TAG, "onChanged() called with: week = [" + week + "]");
-                }else {
+                } else {
                     Log.d(TAG, "db not be created onChanged() called with: week = [" + week + "]");
                 }
 
@@ -75,9 +93,6 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
-
-
-
 
 
     @RequiresApi(api = Build.VERSION_CODES.M)

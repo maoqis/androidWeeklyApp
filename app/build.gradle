@@ -16,6 +16,23 @@ android {
             }
         }
     }
+
+    signingConfigs {
+        debug {
+            keyAlias 'weekly'
+            keyPassword 'maoqis123'
+            storeFile file('./../key1.store')
+            storePassword 'maoqis123'
+        }
+
+        release {
+            keyAlias 'weekly'
+            keyPassword 'maoqis123'
+            storeFile file('./../key1.store')
+            storePassword 'maoqis123'
+        }
+    }
+
     buildTypes {
         release {
             minifyEnabled false
