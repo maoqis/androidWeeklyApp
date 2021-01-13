@@ -13,6 +13,5 @@
         android:title="分享"
         app:actionProviderClass="android.support.v7.widget.ShareActionProvider"
         app:showAsAction="never" />
-    ß
 
 </menu>

@@ -24,6 +24,8 @@ public class SearchActivity extends AppCompatActivity {
     private static final String TAG = "SearchActivity";
     private RecyclerView mRcvContent;
     private WeekAdapter weekAdapter;
+    private SearchView mSearchView;
+    private MenuItem mSearchItem;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,11 +68,10 @@ public class SearchActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.search, menu);
 
-        MenuItem searchItem = menu.findItem(R.id.search);
-        SearchView searchView = (SearchView) searchItem.getActionView();
-
+        mSearchItem = menu.findItem(R.id.search);
+        mSearchView = (SearchView) mSearchItem.getActionView();
         // 核心是利用SearchView此事件监听用户在搜索框中的输入文字变化，同时根据用户实时输入的文字立即返回相应的搜索结果。
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+        mSearchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextChange(String queryText) {
                 Log.d(TAG, "onQueryTextChange() called with: queryText = [" + queryText + "]");
@@ -84,6 +85,7 @@ public class SearchActivity extends AppCompatActivity {
                 return true;
             }
         });
+        mSearchItem.expandActionView();
         return super.onCreateOptionsMenu(menu);
     }
 
