@@ -1,8 +1,10 @@
 package com.maoqis.test.androidnew.room;
 
-import android.arch.lifecycle.LiveData;
+
+import androidx.lifecycle.LiveData;
 
 import com.maoqis.test.androidnew.room.db.AppDatabase;
+import com.maoqis.test.androidnew.room.db.entity.HistoryWeekItem;
 import com.maoqis.test.androidnew.room.db.entity.Week;
 import com.maoqis.test.androidnew.room.db.entity.WeekItem;
 
@@ -49,6 +51,11 @@ public class DataRepository {
     public LiveData<List<WeekItem>> loadWeekItemsByWeekId(long i) {
 
         return mDatabase.weekDao().loadWeekItemsByWeekId(i);
+    }
+
+    public LiveData<List<HistoryWeekItem>> history() {
+
+        return mDatabase.weekDao().history();
     }
 
     public LiveData<List<WeekItem>> findWeekItemBySearchString(String searchString) {

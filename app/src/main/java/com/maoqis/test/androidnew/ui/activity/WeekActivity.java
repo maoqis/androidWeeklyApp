@@ -1,18 +1,14 @@
 package com.maoqis.test.androidnew.ui.activity;
 
-import android.arch.lifecycle.LiveData;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.app.MyPagerAdapter;
-import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.ViewGroup;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.LiveData;
+import androidx.viewpager.widget.ViewPager;
 
 import com.github.thunder413.datetimeutils.DateTimeStyle;
 import com.github.thunder413.datetimeutils.DateTimeUtils;
@@ -20,11 +16,9 @@ import com.maoqis.test.androidnew.R;
 import com.maoqis.test.androidnew.room.BasicApp;
 import com.maoqis.test.androidnew.room.DataRepository;
 import com.maoqis.test.androidnew.room.db.entity.Week;
-import com.maoqis.test.androidnew.ui.fragment.WeekFragment;
-import com.maoqis.test.androidnew.view.DirectionalViewPager;
+import com.maoqis.test.androidnew.ui.MyPagerAdapter;
 import com.maoqis.test.androidnew.view.MyVIewPagerView;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 

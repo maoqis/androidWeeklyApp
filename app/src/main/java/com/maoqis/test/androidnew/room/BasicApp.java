@@ -27,11 +27,12 @@ import com.maoqis.test.androidnew.room.db.AppDatabase;
 public class BasicApp extends Application {
 
     private AppExecutors mAppExecutors;
+    private static BasicApp mBasicApp;
 
     @Override
     public void onCreate() {
         super.onCreate();
-
+        mBasicApp = this;
         mAppExecutors = new AppExecutors();
     }
 
@@ -39,15 +40,19 @@ public class BasicApp extends Application {
         return AppDatabase.getInstance(this, mAppExecutors);
     }
 
+    public static BasicApp getBasicApp() {
+        return mBasicApp;
+    }
+
     public DataRepository getRepository() {
         return DataRepository.getInstance(getDatabase());
     }
 
-    public static DataRepository getRepository(Application application){
-        if (application instanceof BasicApp){
+    public static DataRepository getRepository(Application application) {
+        if (application instanceof BasicApp) {
             BasicApp basicApp = (BasicApp) (application);
             return basicApp.getRepository();
-        }else {
+        } else {
             return null;
         }
 

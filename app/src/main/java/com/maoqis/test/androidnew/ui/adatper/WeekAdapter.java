@@ -1,7 +1,8 @@
 package com.maoqis.test.androidnew.ui.adatper;
 
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import com.maoqis.test.androidnew.room.db.entity.WeekItem;
 import com.maoqis.test.androidnew.ui.item.WeekItemAdapterItem;

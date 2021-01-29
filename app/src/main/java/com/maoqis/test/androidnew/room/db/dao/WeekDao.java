@@ -1,11 +1,15 @@
 package com.maoqis.test.androidnew.room.db.dao;
 
-import android.arch.lifecycle.LiveData;
-import android.arch.persistence.room.Dao;
-import android.arch.persistence.room.Insert;
-import android.arch.persistence.room.OnConflictStrategy;
-import android.arch.persistence.room.Query;
 
+import androidx.lifecycle.LiveData;
+import androidx.room.Dao;
+import androidx.room.Insert;
+import androidx.room.OnConflictStrategy;
+import androidx.room.Query;
+import androidx.room.Transaction;
+
+import com.maoqis.test.androidnew.room.db.entity.History;
+import com.maoqis.test.androidnew.room.db.entity.HistoryWeekItem;
 import com.maoqis.test.androidnew.room.db.entity.Week;
 import com.maoqis.test.androidnew.room.db.entity.WeekItem;
 
@@ -27,7 +31,6 @@ public interface WeekDao {
     void insertWeekItemList(List<WeekItem> bookList);
 
 
-
     @Query("SELECT * FROM Week")
     LiveData<List<Week>> loadAllLiveWeeks();
 
@@ -37,13 +40,16 @@ public interface WeekDao {
 
     @Query("SELECT * from Week where id = :id LIMIT 1")
     LiveData<Week> loadWeekLiveById(long id);
+
     @Query("SELECT * from Week where id = :id LIMIT 1")
     Week loadWeekById(int id);
+
     @Query("SELECT * from Week where id = :id LIMIT 1")
     LiveData<Week> loadLiveWeekById(long id);
 
     /**
      * find week item by week id
+     *
      * @param id
      * @return
      */
@@ -53,10 +59,16 @@ public interface WeekDao {
 
     /**
      * search
+     *
      * @param search
      */
     @Query("SELECT * from WeekItem where title LIKE :search OR des LIKE :search order by week_id desc")
     LiveData<List<WeekItem>> findWeekItemBySearchString(String search);
 
+    @Transaction
+    @Query("SELECT * from WeekItem INNER JOIN  History where WeekItem.id = item_id order by History.date desc")
+    LiveData<List<HistoryWeekItem>> history();
 
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    void insertHistory(History... week);
 }

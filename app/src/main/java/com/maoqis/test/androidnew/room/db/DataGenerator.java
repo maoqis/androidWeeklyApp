@@ -1,7 +1,8 @@
 package com.maoqis.test.androidnew.room.db;
 
-import android.support.annotation.Nullable;
 import android.util.Log;
+
+import androidx.annotation.Nullable;
 
 import com.github.thunder413.datetimeutils.DateTimeUtils;
 import com.maoqis.test.androidnew.net.NetworkComponent;

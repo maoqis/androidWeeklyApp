@@ -1,11 +1,12 @@
 package com.maoqis.test.androidnew.room.db.entity;
 
-import android.arch.persistence.room.ColumnInfo;
-import android.arch.persistence.room.Entity;
-import android.arch.persistence.room.ForeignKey;
-import android.arch.persistence.room.Ignore;
-import android.arch.persistence.room.Index;
-import android.arch.persistence.room.PrimaryKey;
+
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.ForeignKey;
+import androidx.room.Ignore;
+import androidx.room.Index;
+import androidx.room.PrimaryKey;
 
 /**
  * Created by maoqis on 17/12/30.
@@ -20,7 +21,7 @@ public class WeekItem {
     public String link;
     public String type;
     @ColumnInfo(name = "week_id")
-    public long weekId;
+    public Long weekId;
     @ColumnInfo(name = "origin_type")
     public int originType;//
     @Ignore

@@ -2,8 +2,6 @@ package com.maoqis.test.androidnew.ui.activity;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
-import android.arch.lifecycle.LiveData;
-import android.arch.lifecycle.Observer;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -11,12 +9,15 @@ import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
-import android.support.annotation.Nullable;
-import android.support.annotation.RequiresApi;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+
+import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.Observer;
 
 import com.maoqis.test.androidnew.R;
 import com.maoqis.test.androidnew.net.NetworkComponent;
@@ -41,6 +42,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         handleContactPermission();
+
+        findViewById(R.id.tv_history).setOnClickListener(view -> {
+            Intent intent = new Intent(MainActivity.this, HistoryActivity.class);
+            startActivity(intent);
+        });
+
         findViewById(R.id.tv_enter_weekly).setOnClickListener(view -> {
             Intent intent = new Intent(MainActivity.this, WeekActivity.class);
             startActivity(intent);

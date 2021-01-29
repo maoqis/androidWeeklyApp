@@ -3,18 +3,25 @@ package com.maoqis.test.androidnew.ui.item;
 import android.content.Context;
 import android.content.Intent;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
 import com.maoqis.test.androidnew.R;
+import com.maoqis.test.androidnew.room.BasicApp;
+import com.maoqis.test.androidnew.room.db.entity.History;
 import com.maoqis.test.androidnew.ui.activity.WebActivity;
 import com.maoqis.test.androidnew.room.db.entity.WeekItem;
+
+import java.util.Date;
 
 import kale.adapter.item.AdapterItem;
 
 public class WeekItemAdapterItem implements AdapterItem<WeekItem> {
+    private static final String TAG = "WeekItemAdapterItem";
     public static final String KEY_URL = "url";
     public ViewHolder viewHolder;
+
     @Override
     public int getLayoutResId() {
         return R.layout.item_week;
@@ -33,11 +40,11 @@ public class WeekItemAdapterItem implements AdapterItem<WeekItem> {
     @Override
     public void handleData(WeekItem model, int position) {
         viewHolder.mTvTitle.setText(model.getTitle());
-        viewHolder.mTvWeek.setText(" week:"+model.weekId);
+        viewHolder.mTvWeek.setText(" week:" + model.weekId);
         String des = model.getDes();
-        if (TextUtils.isEmpty(des)){
+        if (TextUtils.isEmpty(des)) {
             viewHolder.mTvDes.setVisibility(View.GONE);
-        }else {
+        } else {
             viewHolder.mTvDes.setVisibility(View.VISIBLE);
 
         }
@@ -47,8 +54,15 @@ public class WeekItemAdapterItem implements AdapterItem<WeekItem> {
             public void onClick(View view) {
                 Context context = view.getContext();
                 Intent intent = new Intent(context, WebActivity.class);
-                intent.putExtra(KEY_URL,model.getLink());
+                intent.putExtra(KEY_URL, model.getLink());
                 context.startActivity(intent);
+                History history = new History();
+                history.item_id = model.id;
+                history.date = new Date();
+                Log.d(TAG, "onClick: insertHistory=" + history);
+                Thread thread = new Thread(() -> BasicApp.getBasicApp().getDatabase().weekDao().insertHistory(history));
+                thread.start();
+
             }
         });
     }

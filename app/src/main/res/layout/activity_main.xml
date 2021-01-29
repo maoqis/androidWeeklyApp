@@ -6,6 +6,15 @@
     android:orientation="vertical">
 
     <TextView
+        android:id="@+id/tv_history"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:gravity="center"
+        android:text="enter history"
+        android:textColor="#000000"
+        android:textSize="16dp" />
+
+    <TextView
         android:id="@+id/tv_enter_weekly"
         android:layout_width="match_parent"
         android:layout_height="48dp"

@@ -1,8 +1,12 @@
-package android.support.v4.app;
+package com.maoqis.test.androidnew.ui;
 
 import android.content.Context;
 import android.os.Bundle;
 import android.view.ViewGroup;
+
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentPagerAdapter;
 
 import com.maoqis.test.androidnew.room.db.entity.Week;
 import com.maoqis.test.androidnew.ui.fragment.WeekFragment;
@@ -29,10 +33,6 @@ public class MyPagerAdapter extends FragmentPagerAdapter {
     @Override
     public Object instantiateItem(ViewGroup container, int position) {
         Fragment f = (Fragment) super.instantiateItem(container, position);
-        Bundle savedFragmentState = f.mSavedFragmentState;
-        if (savedFragmentState != null) {
-            savedFragmentState.setClassLoader(f.getClass().getClassLoader());
-        }
         return f;
     }
 
