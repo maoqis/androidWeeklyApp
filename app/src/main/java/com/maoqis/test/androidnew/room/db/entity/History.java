@@ -9,10 +9,9 @@ import androidx.room.PrimaryKey;
 
 import java.util.Date;
 
-@Entity(foreignKeys = @ForeignKey(entity = WeekItem.class, parentColumns = "id", childColumns = "item_id"), indices = {@Index("id"), @Index("item_id")})
+@Entity(foreignKeys = @ForeignKey(entity = WeekItem.class, parentColumns = "id", childColumns = "item_id"), indices = {@Index("item_id")})
 public class History {
-    @PrimaryKey(autoGenerate = true)
-    public long id;
+    @PrimaryKey
     public long item_id;
     @ColumnInfo(name = "date")
     public Date date;
@@ -20,7 +19,7 @@ public class History {
     @Override
     public String toString() {
         return "History{" +
-                "id=" + id +
+                "item_id=" + item_id +
                 ", date=" + date +
                 '}';
     }
